@@ -11,7 +11,7 @@ export default function LoginPhonePage({ onNext }: Props) {
   return (
     <SharedLayout showFooter>
       {/* Left form panel - exact match with Figma */}
-      <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]">
+      <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]" dir="rtl">
         <div className="flex flex-col gap-8 items-center justify-center w-full">
           <p className="font-['IRANSansXFaNum:Bold',sans-serif] leading-[1.32] text-[#0d0800] text-[clamp(15px,1.4vw,18px)] text-right w-full" dir="auto">
             ورود به سامانه
@@ -29,7 +29,7 @@ export default function LoginPhonePage({ onNext }: Props) {
                   <div aria-hidden className="absolute border border-[#dad9d8] border-solid inset-0 pointer-events-none rounded-[12px]" />
                   <input
                     className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#0d0800] text-[clamp(13px,1.2vw,16px)] text-right bg-transparent outline-none"
-                    dir="auto"
+                    dir="rtl"
                     inputMode="tel"
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="09xxxxxxxxx"

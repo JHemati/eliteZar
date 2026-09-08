@@ -19,7 +19,7 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
   return (
     <SharedLayout showDescription>
       {/* Left form panel - exact match with Figma */}
-      <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]">
+      <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]" dir="rtl">
         <div className="flex flex-col gap-8 items-center justify-center w-full">
           <p className="font-['IRANSansXFaNum:Bold',sans-serif] leading-[1.32] text-[#0d0800] text-[clamp(15px,1.4vw,18px)] text-right w-full" dir="auto">
             رمز عبور خود را وارد کنید
@@ -44,7 +44,7 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
                 </button>
                 <input
                   className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#3b3b3b] text-[clamp(13px,1.2vw,16px)] text-right bg-transparent outline-none pr-[8px]"
-                  dir="auto"
+                  dir="rtl"
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="●●●●●●"
                   type={showPassword ? "text" : "password"}

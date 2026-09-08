@@ -46,7 +46,7 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
   return (
     <SharedLayout showDescription>
       {/* Left form panel - exact match with Figma */}
-      <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]">
+      <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]" dir="rtl">
         {/* Back arrow (top-left in RTL context = top-right visually) */}
         <button
           className="absolute top-[39px] left-[39px] cursor-pointer hover:opacity-70 transition-opacity"

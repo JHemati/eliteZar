@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SharedLayout from "@/components/SharedLayout";
 
 const EYE_PATH_1 =
@@ -16,6 +16,11 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <SharedLayout showDescription>
       {/* Left form panel - exact match with Figma */}
@@ -30,7 +35,15 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
             <div className="h-[58px] relative w-full">
               <div className="absolute bg-white inset-[10px_0_0_0] flex items-center justify-between px-[12px] py-[14px] rounded-[12px]">
                 <div aria-hidden className="absolute border border-[#dad9d8] border-solid inset-0 pointer-events-none rounded-[12px]" />
-                {/* Eye icon (left side in RTL) - exact structure from Figma */}
+                <input
+                  className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#3b3b3b] text-[clamp(13px,1.2vw,16px)] text-right bg-transparent outline-none pr-[8px]"
+                  dir="rtl"
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="●●●●●●"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                />
+                {/* Eye icon (right side in RTL) - exact structure from Figma */}
                 <button
                   className="content-stretch flex items-center relative shrink-0 cursor-pointer"
                   onClick={() => setShowPassword(!showPassword)}
@@ -42,14 +55,6 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
                     </svg>
                   </div>
                 </button>
-                <input
-                  className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#3b3b3b] text-[clamp(13px,1.2vw,16px)] text-right bg-transparent outline-none pr-[8px]"
-                  dir="rtl"
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="●●●●●●"
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                />
               </div>
               <div className="absolute bg-white flex h-5 items-center justify-center px-[4px] py-[2px] right-[12px] rounded-[16px] top-0">
                 <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[#55524c] text-[12px] leading-[1.32]" dir="auto">
@@ -79,14 +84,14 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
             <button
               className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.4] text-[#084d4d] text-[clamp(11px,1vw,14px)] text-center cursor-pointer hover:opacity-70 transition-opacity"
               dir="auto"
-              onClick={onSwitchToOtp}
+              onClick={() => { window.scrollTo(0, 0); onSwitchToOtp(); }}
             >
               ورود با رمز یک‌بار‌مصرف
             </button>
             <button
               className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.4] text-[#084d4d] text-[clamp(11px,1vw,14px)] text-center cursor-pointer hover:opacity-70 transition-opacity"
               dir="auto"
-              onClick={onForgotPassword}
+              onClick={() => { window.scrollTo(0, 0); onForgotPassword(); }}
             >
               فراموشی رمز عبور
             </button>

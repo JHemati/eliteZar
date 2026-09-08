@@ -43,13 +43,18 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
     }
   };
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <SharedLayout showDescription>
       {/* Left form panel - exact match with Figma */}
       <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]" dir="rtl">
         {/* Back arrow (top-left in RTL context = top-right visually) */}
         <button
-          className="absolute top-[39px] left-[39px] cursor-pointer hover:opacity-70 transition-opacity"
+          className="absolute top-[39px] right-[39px] cursor-pointer hover:opacity-70 transition-opacity"
           onClick={onBack}
         >
           <svg fill="none" height="24" viewBox="0 0 24 24" width="24">
@@ -133,7 +138,7 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
           <button
             className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.4] text-[#084d4d] text-[clamp(11px,1vw,14px)] text-center cursor-pointer hover:opacity-70 transition-opacity"
             dir="auto"
-            onClick={onSwitchToPassword}
+            onClick={() => { window.scrollTo(0, 0); onSwitchToPassword(); }}
           >
             ورود با رمز عبور
           </button>

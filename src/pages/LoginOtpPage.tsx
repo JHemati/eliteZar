@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import SharedLayout from "@/components/SharedLayout";
+import SplashScreen from "@/components/SplashScreen";
 
 const ARROW_RIGHT_PATH = "M14.43 5.93L20.5 12L14.43 18.07";
 
@@ -14,12 +15,25 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [seconds, setSeconds] = useState(160);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
+    if (showSplash) return;
     if (seconds <= 0) return;
     const timer = setInterval(() => setSeconds((s) => s - 1), 1000);
     return () => clearInterval(timer);
-  }, [seconds]);
+  }, [seconds, showSplash]);
+
+  // Scroll to top when component mounts or splash finishes
+  useEffect(() => {
+    if (!showSplash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [showSplash]);
+
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
 
   const formatTime = (s: number) => {
     const m = Math.floor(s / 60);
@@ -45,7 +59,7 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
 
   // Scroll to top when component mounts
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
@@ -78,12 +92,12 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
         </button>
 
         <div className="flex flex-col gap-8 items-center justify-center w-full">
-          <p className="font-['IRANSansXFaNum:Bold',sans-serif] leading-[1.32] text-[#0d0800] text-[clamp(15px,1.4vw,18px)] text-right w-full" dir="auto">
+          <p className="font-['IRANSansXFaNum:Bold',sans-serif] leading-[1.32] text-[#0d0800] text-[clamp(15px,1.4vw,18px)] text-right w-full" dir="rtl">
             کد تایید را وارد کنید
           </p>
 
           <div className="flex flex-col gap-[26px] items-start w-full">
-            <p className="font-['IRANSansXFaNum:Regular',sans-serif] leading-[1.4] text-[#0d0800] text-[clamp(11px,1vw,14px)] text-right w-full" dir="auto">
+            <p className="font-['IRANSansXFaNum:Regular',sans-serif] leading-[1.4] text-[#0d0800] text-[clamp(11px,1vw,14px)] text-right w-full" dir="rtl">
               {`کد تایید برای شماره ${phone} پیامک شد`}
             </p>
 
@@ -118,8 +132,8 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
             {/* Timer + confirm — exact structure from Figma */}
             <div className="flex flex-col gap-[16px] items-start w-full">
               <div className="[word-break:break-word] content-stretch flex font-['IRANSansXFaNum:Regular',sans-serif] gap-[8px] items-center justify-center leading-[1.4] not-italic relative shrink-0 text-[#55524c] text-[clamp(11px,1vw,14px)] text-center w-full whitespace-nowrap">
-                <p className="relative shrink-0" dir="auto">مانده تا دریافت مجدد کد</p>
-                <p className="relative shrink-0" dir="auto">{seconds > 0 ? formatTime(seconds) : "ارسال مجدد"}</p>
+                <p className="relative shrink-0" dir="rtl">مانده تا دریافت مجدد کد</p>
+                <p className="relative shrink-0" dir="rtl">{seconds > 0 ? formatTime(seconds) : "ارسال مجدد"}</p>
               </div>
 
               <button
@@ -127,7 +141,7 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
                 onClick={() => otp.every((d) => d !== "") && onConfirm()}
               >
                 <div className="flex gap-[4px] items-center justify-center p-[12px]">
-                  <p className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.48] text-[#0d0800] text-[clamp(14px,1.3vw,16px)] text-center" dir="auto">
+                  <p className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.48] text-[#0d0800] text-[clamp(14px,1.3vw,16px)] text-center" dir="rtl">
                     تایید
                   </p>
                 </div>
@@ -137,8 +151,8 @@ export default function LoginOtpPage({ phone, onBack, onConfirm, onSwitchToPassw
 
           <button
             className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.4] text-[#084d4d] text-[clamp(11px,1vw,14px)] text-center cursor-pointer hover:opacity-70 transition-opacity"
-            dir="auto"
-            onClick={() => { window.scrollTo(0, 0); onSwitchToPassword(); }}
+            dir="rtl"
+            onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); onSwitchToPassword(); }}
           >
             ورود با رمز عبور
           </button>

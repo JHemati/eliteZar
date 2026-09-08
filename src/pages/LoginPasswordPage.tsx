@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SharedLayout from "@/components/SharedLayout";
+import SplashScreen from "@/components/SplashScreen";
 
 const EYE_PATH_1 =
   "M10.3867 8C10.3867 9.32 9.32 10.3867 8 10.3867C6.68 10.3867 5.61333 9.32 5.61333 8C5.61333 6.68 6.68 5.61333 8 5.61333C9.32 5.61333 10.3867 6.68 10.3867 8Z";
@@ -15,18 +16,25 @@ interface Props {
 export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPassword }: Props) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts or splash finishes
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (!showSplash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [showSplash]);
+
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
 
   return (
     <SharedLayout showDescription>
       {/* Left form panel - exact match with Figma */}
       <div className="absolute bg-[rgba(255,255,255,0.81)] border border-[#f0f0f0] border-solid top-[7.7%] left-[4.5%] w-[43%] bottom-[7.7%] flex flex-col items-center justify-center px-[8%]" dir="rtl">
         <div className="flex flex-col gap-8 items-center justify-center w-full">
-          <p className="font-['IRANSansXFaNum:Bold',sans-serif] leading-[1.32] text-[#0d0800] text-[clamp(15px,1.4vw,18px)] text-right w-full" dir="auto">
+          <p className="font-['IRANSansXFaNum:Bold',sans-serif] leading-[1.32] text-[#0d0800] text-[clamp(15px,1.4vw,18px)] text-right w-full" dir="rtl">
             رمز عبور خود را وارد کنید
           </p>
 
@@ -36,14 +44,14 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
               <div className="absolute bg-white inset-[10px_0_0_0] flex items-center justify-between px-[12px] py-[14px] rounded-[12px]">
                 <div aria-hidden className="absolute border border-[#dad9d8] border-solid inset-0 pointer-events-none rounded-[12px]" />
                 <input
-                  className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#3b3b3b] text-[clamp(13px,1.2vw,16px)] text-right bg-transparent outline-none pr-[8px]"
-                  dir="rtl"
+                  className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#3b3b3b] text-[clamp(13px,1.2vw,16px)] text-left bg-transparent outline-none pr-[8px]"
+                  dir="ltr"
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="●●●●●●"
                   type={showPassword ? "text" : "password"}
                   value={password}
                 />
-                {/* Eye icon (right side in RTL) - exact structure from Figma */}
+                {/* Eye icon (left side for LTR input) - exact structure from Figma */}
                 <button
                   className="content-stretch flex items-center relative shrink-0 cursor-pointer"
                   onClick={() => setShowPassword(!showPassword)}
@@ -57,7 +65,7 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
                 </button>
               </div>
               <div className="absolute bg-white flex h-5 items-center justify-center px-[4px] py-[2px] right-[12px] rounded-[16px] top-0">
-                <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[#55524c] text-[12px] leading-[1.32]" dir="auto">
+                <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[#55524c] text-[12px] leading-[1.32]" dir="rtl">
                   رمز ‌عبور*
                 </p>
               </div>
@@ -72,7 +80,7 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
               onClick={() => password.length > 0 && onConfirm()}
             >
               <div className="flex gap-[4px] items-center justify-center p-[12px]">
-                <p className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.48] text-[#0d0800] text-[clamp(14px,1.3vw,16px)] text-center" dir="auto">
+                <p className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.48] text-[#0d0800] text-[clamp(14px,1.3vw,16px)] text-center" dir="rtl">
                   تایید
                 </p>
               </div>
@@ -83,15 +91,15 @@ export default function LoginPasswordPage({ onConfirm, onSwitchToOtp, onForgotPa
           <div className="flex flex-col gap-[12px] items-center w-full">
             <button
               className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.4] text-[#084d4d] text-[clamp(11px,1vw,14px)] text-center cursor-pointer hover:opacity-70 transition-opacity"
-              dir="auto"
-              onClick={() => { window.scrollTo(0, 0); onSwitchToOtp(); }}
+              dir="rtl"
+              onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); onSwitchToOtp(); }}
             >
               ورود با رمز یک‌بار‌مصرف
             </button>
             <button
               className="font-['IRANSansXFaNum:Medium',sans-serif] leading-[1.4] text-[#084d4d] text-[clamp(11px,1vw,14px)] text-center cursor-pointer hover:opacity-70 transition-opacity"
-              dir="auto"
-              onClick={() => { window.scrollTo(0, 0); onForgotPassword(); }}
+              dir="rtl"
+              onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); onForgotPassword(); }}
             >
               فراموشی رمز عبور
             </button>

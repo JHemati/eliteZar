@@ -78,7 +78,7 @@ export default function SharedLayout({ children, showDescription = false, showFo
       {children}
 
       {/* Right info panel */}
-      <div className="absolute backdrop-blur-[12px] bg-[rgba(255,255,255,0.64)] flex items-center justify-center top-[5.8%] right-[4.5%] w-[44%] bottom-[5.8%] p-[5%]">
+      <div className="absolute backdrop-blur-[12px] bg-[rgba(255,255,255,0.64)] flex items-center justify-center top-[5.8%] right-[4.5%] w-[44%] bottom-[5.8%] p-[5%]" dir="rtl">
         <div className="flex flex-col gap-8 items-end justify-center w-full h-full">
           {/* Logo + brand */}
           <div className="flex flex-col gap-3 items-end justify-center">
@@ -86,10 +86,10 @@ export default function SharedLayout({ children, showDescription = false, showFo
               <img alt="آریانا گلد" className="absolute inset-0 object-cover size-full" src={imgLogo} />
             </div>
             <div className="flex flex-col gap-1 items-end text-right">
-              <p className="font-['Doran:Bold',sans-serif] text-[#986c12] text-[clamp(22px,2.5vw,32px)] leading-[1.32]" dir="auto">
+              <p className="font-['Doran:Bold',sans-serif] text-[#986c12] text-[clamp(22px,2.5vw,32px)] leading-[1.32] text-right" dir="rtl">
                 سامانه آریانا گلد
               </p>
-              <p className="font-['Doran:Regular',sans-serif] text-[#363636] text-[clamp(14px,1.6vw,20px)] leading-[1.32]" dir="auto">
+              <p className="font-['Doran:Regular',sans-serif] text-[#363636] text-[clamp(14px,1.6vw,20px)] leading-[1.32] text-right" dir="rtl">
                 معامله مطمئن ، سرمایه پایدار
               </p>
             </div>
@@ -97,7 +97,7 @@ export default function SharedLayout({ children, showDescription = false, showFo
 
           {/* Description — shown on OTP and Password pages */}
           {showDescription && (
-            <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-black text-[clamp(12px,1.1vw,16px)] leading-[2] text-right w-full" dir="auto">
+            <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-black text-[clamp(12px,1.1vw,16px)] leading-[2] text-right w-full" dir="rtl">
               مجموعه ما یکی از فعالان حوزه خرید و فروش طلا و جواهر در منطقه است که با ارائه انواع مصنوعات طلا، سکه و زیورآلات متنوع در خدمت مشتریان گرامی می‌باشد. برای دریافت اطلاعات بیشتر، می‌توانید با ما در ارتباط باشید.
             </p>
           )}
@@ -105,21 +105,21 @@ export default function SharedLayout({ children, showDescription = false, showFo
           {/* Contact info */}
           <div className="flex flex-col gap-2 items-end w-full">
             <div className="flex gap-2 items-center justify-end">
-              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(12px,1.1vw,16px)] text-right whitespace-nowrap" dir="auto">
+              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(12px,1.1vw,16px)] text-right whitespace-nowrap" dir="rtl">
                 <span className="text-[#383838]">شماره تماس:</span>
                 <span>{` 7213506 0353`}</span>
               </p>
               <CallIcon />
             </div>
             <div className="flex gap-2 items-center justify-end">
-              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(12px,1.1vw,16px)] text-right whitespace-nowrap" dir="auto">
+              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(12px,1.1vw,16px)] text-right whitespace-nowrap" dir="rtl">
                 <span className="text-[#383838]">شماره همراه:</span>
                 <span>{` 09130026714`}</span>
               </p>
               <CallIcon />
             </div>
             <div className="flex gap-2 items-center justify-end w-full">
-              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(12px,1.1vw,16px)] text-right whitespace-nowrap" dir="auto">
+              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(12px,1.1vw,16px)] text-right whitespace-nowrap" dir="rtl">
                 <span className="text-[#383838]">آدرس:</span>
                 <span className="text-black">{` یزد بلوار امام جعفر صادق`}</span>
               </p>
@@ -130,13 +130,13 @@ export default function SharedLayout({ children, showDescription = false, showFo
           {/* Download buttons */}
           <div className="flex gap-2 items-center justify-end w-full flex-wrap">
             <button className="bg-white flex gap-2 items-center justify-center px-4 py-2 rounded-[8px] border border-[#e5e3e3] hover:bg-gray-50 transition-colors cursor-pointer">
-              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(10px,1vw,14px)] text-black leading-[28px]" dir="auto">
+              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(10px,1vw,14px)] text-black leading-[28px] text-right" dir="rtl">
                 نسخه وب اپلیکیشن / IOS
               </p>
               <MonitorIcon />
             </button>
             <button className="bg-white flex gap-2 items-center justify-center px-4 py-2 rounded-[8px] border border-[#e5e3e3] hover:bg-gray-50 transition-colors cursor-pointer">
-              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(10px,1vw,14px)] text-black leading-[28px]" dir="auto">
+              <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[clamp(10px,1vw,14px)] text-black leading-[28px] text-right" dir="rtl">
                 دانلود اپلیکیشن اندروید
               </p>
               <DownloadIcon />
@@ -145,7 +145,7 @@ export default function SharedLayout({ children, showDescription = false, showFo
 
           {/* Footer — shown on Login page only */}
           {showFooter && (
-            <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[#6c6c6c] text-[clamp(10px,1vw,14px)] text-center w-full leading-[28px]" dir="auto">
+            <p className="font-['IRANSansXFaNum:Regular',sans-serif] text-[#6c6c6c] text-[clamp(10px,1vw,14px)] text-center w-full leading-[28px]" dir="rtl">
               <span>{`تمامی حقوق برای وبسایت `}</span>
               <span className="font-['Doran:Bold',sans-serif] text-black">آریانا گلد</span>
               <span>{` محفوظ است `}</span>

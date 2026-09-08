@@ -28,8 +28,8 @@ export default function LoginPhonePage({ onNext }: Props) {
                 <div className="absolute bg-white inset-[10px_0_0_0] flex items-center justify-end px-[12px] py-[14px] rounded-[12px]">
                   <div aria-hidden className="absolute border border-[#dad9d8] border-solid inset-0 pointer-events-none rounded-[12px]" />
                   <input
-                    className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#0d0800] text-[clamp(13px,1.2vw,16px)] text-right bg-transparent outline-none"
-                    dir="rtl"
+                    className="flex-1 min-w-0 font-['IRANSansXFaNum:Regular',sans-serif] text-[#0d0800] text-[clamp(13px,1.2vw,16px)] text-left bg-transparent outline-none"
+                    dir="ltr"
                     inputMode="tel"
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="09xxxxxxxxx"
